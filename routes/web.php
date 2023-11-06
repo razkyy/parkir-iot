@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::post('simpan-sensor',  [SensorController::class, 'store']);
+Route::get('simpan-sensor',  [SensorController::class, 'store']);
