@@ -23,9 +23,9 @@
                 </td>
                 <td width="100px">
                     @if($sensor->value == 0)
-                        <span class="text-success">Terisi</span>
+                        <span class="text-success">kosong</span>
                     @else 
-                        <span class="text-danger">Kosong</span>
+                        <span class="text-danger">terisi</span>
                     @endif
                 </td>
             </tr>
