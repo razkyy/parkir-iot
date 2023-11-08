@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Sensor;
+use DB;
 
 class SensorController extends Controller
 {
@@ -20,5 +21,31 @@ class SensorController extends Controller
 
         return 'berhasil';
 
+    }
+
+    public function index()
+    {
+        $data['totalSensor'] = collect(DB::select('
+                                SELECT 
+                                COUNT(*) total,
+                                SUM(IF(VALUE=0, 1, 0)) AS total_parkir_kosong,
+                                SUM(IF(VALUE=1, 1, 0)) AS total_parkir_terisi
+                                from sensors
+                            '))->first();
+
+        return view('parkir')->with($data);
+    }
+
+    public function data()
+    {
+        $data = collect(DB::select('
+                                SELECT 
+                                COUNT(*) total,
+                                SUM(IF(VALUE=0, 1, 0)) AS total_parkir_kosong,
+                                SUM(IF(VALUE=1, 1, 0)) AS total_parkir_terisi
+                                from sensors
+                            '))->first();
+                            
+        return response()->json($data, $code ?? 200);
     }
 }
