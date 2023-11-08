@@ -15,8 +15,8 @@ use App\Http\Controllers\SensorController;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('parkir');
 });
 
-Route::post('simpan-sensor',  [SensorController::class, 'store']);
+// Route::post('simpan-sensor',  [SensorController::class, 'store']);
 Route::get('simpan-sensor',  [SensorController::class, 'store']);
