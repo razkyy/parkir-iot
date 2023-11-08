@@ -38,13 +38,17 @@ class SensorController extends Controller
 
     public function data()
     {
-        $data = collect(DB::select('
+        $data['sensor'] = collect(DB::select('
                                 SELECT 
                                 COUNT(*) total,
                                 SUM(IF(VALUE=0, 1, 0)) AS total_parkir_kosong,
                                 SUM(IF(VALUE=1, 1, 0)) AS total_parkir_terisi
                                 from sensors
                             '))->first();
+
+        $data['listSensor'] = Sensor::get();
+
+        $data['html']   = view('table-mobil')->with($data)->render();
                             
         return response()->json($data, $code ?? 200);
     }

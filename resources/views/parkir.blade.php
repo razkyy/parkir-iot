@@ -256,81 +256,11 @@
             <!-- Custom tabs (Charts with tabs)-->
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Price List Roda 4 &nbsp; <i class="ion ion-android-car"></i></h3>
+                <h3 class="card-title">List Parkir &nbsp; <i class="ion ion-android-car"></i></h3>
               </div>
               <div class="card-body">
-	      <table class="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th style="width: 10px">No</th>
-                      <th>Deskripsi</th>
-                      <th>Lama</th>
-                      <th style="width: 40px">Harga</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1.</td>
-                      <td>1 (satu) jam pertama</td>
-                      <td>
-                        <div class="progress progress-xs active">
-                          <div class="progress-bar bg-success" style="width: 10%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-success">Rp. 10.000</span></td>
-                    </tr>
-                    <tr>
-                      <td>2.</td>
-                      <td>Setiap jam berikutnya s/d 5 jam</td>
-                      <td>
-                        <div class="progress progress-xs">
-                          <div class="progress-bar bg-success" style="width: 30%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-success">Rp. 3.000</span></td>
-                    </tr>
-                    <tr>
-                      <td>3.</td>
-                      <td>>5 jam s/d 12 jam</td>
-                      <td>
-                        <div class="progress progress-xs progress-striped active">
-                          <div class="progress-bar bg-primary" style="width: 50%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-primary">Rp. 25.000</span></td>
-                    </tr>
-                    <tr>
-                      <td>4.</td>
-                      <td>>12 jam s/d 24 jam</td>
-                      <td>
-                        <div class="progress progress-xs progress-striped active">
-                          <div class="progress-bar bg-warning" style="width: 65%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-warning">Rp. 100.000</span></td>
-                    </tr>
-                    <tr>
-                      <td>5.</td>
-                      <td>Inap</td>
-                      <td>
-                        <div class="progress progress-xs progress-striped active">
-                          <div class="progress-bar bg-warning" style="width: 85%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-warning">Rp. 100.000</span></td>
-                    </tr>
-                    <tr>
-                      <td>6.</td>
-                      <td>Denda (karcis hilang)</td>
-                      <td>
-                        <div class="progress progress-xs progress-striped active">
-                          <div class="progress-bar bg-danger" style="width: 100%"></div>
-                        </div>
-                      </td>
-                      <td><span class="badge bg-danger">Rp. 150.000</span></td>
-                    </tr>
-                  </tbody>
-                </table>    
+              <div id="table-sensor">
+              </div>   
               </div><!-- /.card-body -->
             </div>
 
@@ -400,10 +330,15 @@
   setInterval(function() {
     $.ajax({
             url: '/data-sensor'
-        }).done(function (data) {
+        }).done(function (result) {
+          data = result.sensor
            $('#totalSensor').text(data.total)
            $('#total_parkir_kosong').text(data.total_parkir_kosong)
            $('#total_parkir_terisi').text(data.total_parkir_terisi)
+
+          $('#table-sensor').html(result.html);
+
+          //  $('#table-sensor').append('<tr><td>1</td><td>sensor1</td><td><i class="fas fa-car"></i></td></tr>')
             // $(target).find("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
             // console.log(data)
         })
