@@ -225,7 +225,7 @@
                 <h3>Jumlah Parkir Kosong</h3>
               </div>
               <div class="icon">
-                <i class="ion ion-android-checkbox-outline-blank"></i>
+                <i class="ion ion-android-car"></i>
               </div>
               <a href="#" class="small-box-footer"> &nbsp;</a>
             </div>

@@ -13,7 +13,7 @@
                 <td>
                     {{$loop->index + 1}}
                 </td>
-                <td>{{$sensor->name}}</td>
+                <td>Slot {{$loop->index + 1}}</td>
                 <td width="100px">
                     @if($sensor->value == 0)
                         <span class="text-success"><h1><i class="fas fa-car"></i></h1></span>
